@@ -1,5 +1,6 @@
 import React from "react";
 import FundList from "./FundList";
+import css from "../css/app.css";
 
 function App() {
   return (

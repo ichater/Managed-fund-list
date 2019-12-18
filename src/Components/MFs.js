@@ -4,7 +4,7 @@ export default function managedFund(props) {
   const { name, Category, MER } = props;
   return (
     <>
-      <tr>
+      <tr class="MF-table-row">
         <td> {name}</td>
         <td> {Category}</td>
         <td>
@@ -12,6 +12,12 @@ export default function managedFund(props) {
         </td>
         <td>
           $<input type="number" placeholder="fund value"></input>
+        </td>
+        <td>
+          <button className="btn1 btn-edit">Edit</button>
+        </td>
+        <td>
+          <button className="btn1 btn-delete">Delete</button>
         </td>
       </tr>
     </>

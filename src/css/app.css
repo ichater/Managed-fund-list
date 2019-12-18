@@ -1,0 +1,14 @@
+@import "MFs.css";
+@import-normalize;
+@import "buttons.css";
+@import "table.css";
+
+*,
+*::before,
+*::after {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}

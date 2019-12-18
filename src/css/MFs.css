@@ -1,0 +1,15 @@
+.MF-list {
+  border-right: 1px solid black;
+  min-height: 100vh;
+  width: 50%;
+}
+
+.MF-list_add-MF-btn-container {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.Fund-Heading {
+  padding-left: 30%;
+}
