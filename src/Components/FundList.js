@@ -1,25 +1,36 @@
 import React from "react";
 import MFs from "./MFs";
 
-export default function FundList({ funds }) {
+export default function FundList(props) {
+  const { funds, handleMFAdd, handleFundDelete } = props;
   return (
     <div className="MF-list">
       <h1 className="Fund-Heading">Fund List</h1>
       <div>
         <table className="fundTable">
-          <tr>
-            <th> Fund Name</th>
-            <th> Category</th>
-            <th> MER </th>
-            <th> Value </th>
-          </tr>
-          {funds.map(funds => {
-            return <MFs key={funds.id} {...funds} />;
-          })}
+          <tbody>
+            <tr>
+              <th> Fund Name</th>
+              <th> Category</th>
+              <th> MER </th>
+              <th> Value </th>
+            </tr>
+            {funds.map(funds => {
+              return (
+                <MFs
+                  key={funds.id}
+                  handleFundDelete={handleFundDelete}
+                  {...funds}
+                />
+              );
+            })}
+          </tbody>
         </table>
       </div>
       <div className="MF-list_add-MF-btn-container">
-        <button className="btn btn--primary">Add Fund</button>
+        <button className="btn btn--primary" onClick={handleMFAdd}>
+          Add Fund
+        </button>
       </div>
     </div>
   );

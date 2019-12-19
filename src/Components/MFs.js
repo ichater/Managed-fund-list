@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function managedFund(props) {
-  const { name, Category, MER } = props;
+  const { id, name, Category, MER, handleFundDelete } = props;
   return (
     <>
-      <tr class="MF-table-row">
+      <tr className="MF-table-row">
         <td> {name}</td>
         <td> {Category}</td>
         <td>
@@ -17,7 +17,12 @@ export default function managedFund(props) {
           <button className="btn1 btn-edit">Edit</button>
         </td>
         <td>
-          <button className="btn1 btn-delete">Delete</button>
+          <button
+            className="btn1 btn-delete"
+            onClick={() => handleFundDelete(id)}
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </>
