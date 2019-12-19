@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FundList from "./FundList";
 import css from "../css/app.css";
 import uuidv4 from "uuid/v4";
 
+export const FundContext = React.createContext();
+const LOCAL_STORAGE_KEY = "fundList.funds";
+
 function App() {
   // functions that will be used in other files
   const [funds, setManagedFunds] = useState(sampleFunds);
+
+  useEffect(() => {
+    const fundsJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (fundsJSON != null) setManagedFunds(JSON.parse(fundsJSON));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(funds));
+    //below array specifies when you want to call the useEffect function.
+  }, [funds]);
+
+  const FundContextValue = {
+    handleMFAdd,
+    handleFundDelete
+  };
   // function for adding managed funds
   function handleMFAdd() {
     const newMF = {
@@ -23,12 +41,12 @@ function App() {
 
   return (
     <div>
-      <FundList
-        //exported props to child components
-        funds={funds}
-        handleMFAdd={handleMFAdd}
-        handleFundDelete={handleFundDelete}
-      ></FundList>
+      <FundContext.Provider value={FundContextValue}>
+        <FundList
+          //exported props to child components
+          funds={funds}
+        ></FundList>
+      </FundContext.Provider>
     </div>
   );
 }

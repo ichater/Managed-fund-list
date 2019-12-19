@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import MFs from "./MFs";
+import { FundContext } from "./App";
 
-export default function FundList(props) {
-  const { funds, handleMFAdd, handleFundDelete } = props;
+export default function FundList({ funds }) {
+  const { handleMFAdd } = useContext(FundContext);
   return (
     <div className="MF-list">
       <h1 className="Fund-Heading">Fund List</h1>
@@ -16,13 +17,7 @@ export default function FundList(props) {
               <th> Value </th>
             </tr>
             {funds.map(funds => {
-              return (
-                <MFs
-                  key={funds.id}
-                  handleFundDelete={handleFundDelete}
-                  {...funds}
-                />
-              );
+              return <MFs key={funds.id} {...funds} />;
             })}
           </tbody>
         </table>

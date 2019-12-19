@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FundContext } from "./App";
 
-export default function managedFund(props) {
-  const { id, name, Category, MER, handleFundDelete } = props;
+export default function ManagedFund(props) {
+  const { handleFundDelete } = useContext(FundContext);
+  const { id, name, Category, MER } = props;
   return (
     <>
       <tr className="MF-table-row">
