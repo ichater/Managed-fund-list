@@ -2,11 +2,13 @@
 @import-normalize;
 @import "buttons.css";
 @import "table.css";
+@import "FundEdit.css";
 
 *,
 *::before,
 *::after {
   font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 body {

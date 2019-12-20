@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FundContext } from "./App";
 
 export default function ManagedFund(props) {
-  const { handleFundDelete } = useContext(FundContext);
+  const { handleFundDelete, handleFundSelect } = useContext(FundContext);
   const { id, name, Category, MER } = props;
   return (
     <>
@@ -16,7 +16,12 @@ export default function ManagedFund(props) {
           $<input type="number" placeholder="fund value"></input>
         </td>
         <td>
-          <button className="btn1 btn-edit">Edit</button>
+          <button
+            className="btn1 btn-edit"
+            onClick={() => handleFundSelect(id)}
+          >
+            Edit
+          </button>
         </td>
         <td>
           <button

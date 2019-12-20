@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import FundList from "./FundList";
 import css from "../css/app.css";
 import uuidv4 from "uuid/v4";
+import FundEdit from "./FundEdit";
 
 export const FundContext = React.createContext();
 const LOCAL_STORAGE_KEY = "fundList.funds";
 
 function App() {
+  const [selectedFundID, setSelectedFundID] = useState();
   // functions that will be used in other files
   const [funds, setManagedFunds] = useState(sampleFunds);
+  const selectedFund = funds.find(funds => funds.id === selectedFundID);
 
   useEffect(() => {
     const fundsJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -22,8 +25,14 @@ function App() {
 
   const FundContextValue = {
     handleMFAdd,
-    handleFundDelete
+    handleFundDelete,
+    handleFundSelect
   };
+
+  function handleFundSelect(id) {
+    setSelectedFundID(id);
+  }
+
   // function for adding managed funds
   function handleMFAdd() {
     const newMF = {
@@ -42,6 +51,8 @@ function App() {
   return (
     <div>
       <FundContext.Provider value={FundContextValue}>
+        {/* undefined && anything else is always undefined */}
+        {selectedFund && <FundEdit Fund={selectedFund} />}
         <FundList
           //exported props to child components
           funds={funds}
