@@ -26,7 +26,8 @@ function App() {
   const FundContextValue = {
     handleMFAdd,
     handleFundDelete,
-    handleFundSelect
+    handleFundSelect,
+    handleFundChange
   };
 
   function handleFundSelect(id) {
@@ -42,6 +43,14 @@ function App() {
       MER: 0.9
     };
     setManagedFunds([...funds, newMF]);
+  }
+
+  //function to allow you to change edited managed funds
+  function handleFundChange(id, fund) {
+    const newFund = [...funds];
+    const index = newFund.findIndex(f => f.id === id);
+    newFund[index] = fund;
+    setManagedFunds(newFund);
   }
 
   function handleFundDelete(id) {

@@ -4,6 +4,7 @@ import { FundContext } from "./App";
 export default function ManagedFund(props) {
   const { handleFundDelete, handleFundSelect } = useContext(FundContext);
   const { id, name, Category, MER } = props;
+
   return (
     <>
       <tr className="MF-table-row">
