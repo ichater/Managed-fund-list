@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FundContext } from "./App";
 
 export default function ManagedFund(props) {
-  const { handleFundDelete, handleFundSelect } = useContext(FundContext);
-  const { id, name, Category, MER } = props;
+  const {
+    handleFundDelete,
+    handleFundSelect,
+    handleFundValueChange
+  } = useContext(FundContext);
+  const { id, name, Category, MER, value } = props;
 
   return (
     <>
@@ -11,10 +15,17 @@ export default function ManagedFund(props) {
         <td> {name}</td>
         <td> {Category}</td>
         <td>
-          {MER} $(<span>0</span>)
+          {/* toFixed gud */}
+          {MER} $(<span>{((value * MER) / 100).toFixed(2)}</span>)
         </td>
         <td>
-          $<input type="number" placeholder="fund value"></input>
+          $
+          <input
+            type="number"
+            placeholder="fund value"
+            onChange={e => handleFundValueChange(id, e.target.value)}
+            value={value}
+          ></input>
         </td>
         <td>
           <button

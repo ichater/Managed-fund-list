@@ -27,8 +27,16 @@ function App() {
     handleMFAdd,
     handleFundDelete,
     handleFundSelect,
-    handleFundChange
+    handleFundChange,
+    handleFundValueChange
   };
+
+  function handleFundValueChange(id, value) {
+    const newFunds = [...funds];
+    const index = newFunds.findIndex(f => f.id === id);
+    newFunds[index].value = value;
+    setManagedFunds(newFunds);
+  }
 
   function handleFundSelect(id) {
     setSelectedFundID(id);
@@ -40,7 +48,8 @@ function App() {
       id: uuidv4(),
       name: "newMF",
       Category: "money",
-      MER: 0.9
+      MER: 0.9,
+      value: 0
     };
     setManagedFunds([...funds, newMF]);
   }
@@ -76,13 +85,15 @@ const sampleFunds = [
     id: 1,
     name: "Vanguard Cash Plus Fund",
     Category: "Cash: Cash enhanced",
-    MER: 0.3
+    MER: 0.3,
+    value: 0
   },
   {
     id: 2,
     name: "Pendal Fixed Interest Fund",
     Category: "Fixed Interest: Australian",
-    MER: 0.5
+    MER: 0.5,
+    value: 0
   }
 ];
 

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import MFs from "./MFs";
 import { FundContext } from "./App";
+import FundMERTotal from "./FundMERTotal";
 
 export default function FundList({ funds }) {
   const { handleMFAdd } = useContext(FundContext);
@@ -27,6 +28,7 @@ export default function FundList({ funds }) {
           Add Fund
         </button>
       </div>
+      Total MER Value: $<FundMERTotal funds={funds} />
     </div>
   );
 }
